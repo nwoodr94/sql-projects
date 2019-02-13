@@ -1,0 +1,22 @@
+/*Shows by customer segmentation which ad campaigns, 'campaign', were most successful in reaching customers, 'count(*)', grouped by which cute animal was used, 'test'.*/
+
+SELECT count(*), test
+FROM users
+WHERE test = 'lions'
+AND campaign is not NULL;
+/*5 people who saw the lion clicked through to the website*/
+
+SELECT count(*), test
+FROM users
+WHERE test = 'tigers'
+AND campaign is not NULL;
+/*0 people who saw the tiger clicked through to the website*/
+
+SELECT count(*), test
+FROM users
+WHERE test = 'bears'
+AND campaign is not NULL;
+/*16 people who saw the bear clicked through to the website*/
+
+/*The bear is the most popular animal with this user base, and provided a control on number of emails sent, it is advisable to continue showing the bear*/
+
