@@ -1,0 +1,24 @@
+/* 20252 is Smokey the Bear's zip code - purchases in this zip code are likely fraudulent. */
+
+SELECT * 
+FROM transaction_data
+WHERE zip = 20252;
+
+/* IP addressed beginning with '10.' are reserved for internal use only. Purchases with these IP addresses are suspicious */
+
+SELECT * 
+FROM transaction_data
+WHERE ip_address LIKE '10.%';
+
+/* Users are posting transactions using disposable email addresses typically associated with fraudulent activity in banking.*/
+
+SELECT *
+FROM transaction_data
+WHERE email LIKE '%temp_email.com';
+
+/* A man named 'John' called and wants to dispute a charge that he says came from an IP address starting with '120.'*/
+
+SELECT *
+FROM transaction_data
+WHERE full_name LIKE 'John%'
+AND ip_address LIKE '120.%';
