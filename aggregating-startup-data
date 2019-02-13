@@ -1,0 +1,23 @@
+/*Write aggregate SQL functions to take a snapshot of the startup economy in 2015*/
+
+/*Find out the average size of a startup, grouped by HQ location*/
+
+SELECT location, ROUND(AVG(employees), 0) as 'company size'
+FROM startups
+GROUP BY 1
+ORDER BY 2 DESC;
+
+/*Return the average valuation for a startup, grouped by category*/
+
+SELECT category, ROUND(AVG(valuation), 0) AS 'average valuation'
+FROM startups
+GROUP BY 1
+ORDER BY 2 DESC;
+
+/*Find the "game-changer", the company that raised the most money in its 'seed' stage of fundraising.
+
+It was a NLP startup called Voice2Txt, founded in San Francisco in 2012*/
+
+SELECT name, location, founded, MAX(raised)
+FROM startups
+WHERE stage = 'Seed';
