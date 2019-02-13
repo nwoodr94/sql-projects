@@ -1,0 +1,10 @@
+/*Selects restaurants that are both highly rated and inexpensive,
+and orders them by rating*/
+
+SELECT name, cuisine, review, price
+FROM nomnom
+WHERE review > 4
+  AND price = '$'
+OR review > 4
+  AND price = '$$'
+ORDER BY review DESC;
