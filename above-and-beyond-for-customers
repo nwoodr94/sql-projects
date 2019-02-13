@@ -1,5 +1,5 @@
 /*We can use the 'Special Instructions' column given to customers of a popular late-night food delivery 
-franchise to figure out we can go above and beyond to please our customers*/
+service to figure out how we can go above and beyond to please our customers*/
 
 
 SELECT id AS 'Order #', special_instructions AS 'Notes' 
