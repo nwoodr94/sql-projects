@@ -1,0 +1,32 @@
+/*This aggregate function takes posts on Hacker News, segments them by time of day, 
+and orders the hours by popularity, to show when users are most engaged on the site*/
+
+SELECT
+	STRFTIME('%H', timestamp) AS 'Time',
+  ROUND(AVG(score), 1) AS 'Score',
+  COUNT(*) AS '# of Posts'
+FROM hacker_news
+WHERE timestamp IS NOT null
+GROUP BY 1
+ORDER BY 2 DESC;
+
+/*We can show Hacker News obeys the 1-9-90 rule of internet spaces*/
+
+/*There are 3870 users in this table*/
+SELECT DISTINCT COUNT(user)
+FROM hacker_news;
+
+/*There are 6366 "points" in this table*/
+SELECT SUM(score)
+FROM hacker_news;
+
+/*Just 4 users make up 22% of the engagement of other users on the site*/
+SELECT user, SUM(score)
+FROM hacker_news
+GROUP BY user
+HAVING SUM(score) > 200
+ORDER BY 2 DESC;
+
+/*Math
+(517+309+304+282)/6366 = 0.22
+*/
