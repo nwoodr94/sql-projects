@@ -1,0 +1,51 @@
+/*In this project we use three tables of data to analyze patient blood tests and determine who is at 
+risk of developing heart problems.
+patients.csv
+panels.csv
+recommended_values.csv
+*/
+
+
+/*A placeholder datapoint is in the tables, the string 'ID' is not a valid ID*/
+DELETE FROM panels WHERE ID = 'ID'; 
+DELETE FROM patients WHERE ID = 'ID';  
+
+/*Patient #7 would like to become a regular patient again*/
+UPDATE patients 
+SET status = 'active' 
+WHERE id = 7;
+
+/*We could better organize patient data so that current and former patients are separated into two different tables*/
+CREATE TABLE inactive_patients AS 
+SELECT * 
+FROM patients 
+WHERE Status = "inactive";
+DELETE FROM patients 
+WHERE status = "inactive";
+ALTER TABLE patients 
+RENAME TO active_patients;
+
+/*We are going to calculate a patient's LDL using the Friedewald Equation.*/
+ALTER TABLE panels ADD COLUMN LDL Decimal(5, 2);
+UPDATE panels SET LDL = panels.Cholesterol - 
+(panels.HDL + panels.Triglycerides/5);
+
+/*Recommended values for an LDL test are provided in this table. A value of 130 or greater is considered risky*/
+SELECT * 
+FROM recommended_values;
+
+/*Create the table of at risk patients using LDL data and calculations*/
+CREATE TABLE LDL_Table AS
+SELECT name, round(LDL) 
+FROM active_patients
+JOIN panels
+ON active_patients.ID = panels.patient_ID
+GROUP BY LDL
+HAVING round(LDL) >= 130;
+
+/*We need to join patient contact infomation onto the newly created at-risk patient table so we can contact them*/
+SELECT * FROM LDL_Table
+JOIN active_patients
+ON LDL_Table.name = active_patients.name;
+
+
