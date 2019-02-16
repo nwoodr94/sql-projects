@@ -1,0 +1,73 @@
+/* In this project I use SQL to query and organize real Twitch data for some important business insights.*/
+
+/*Let's take a look at a sample of these tables to see what they look like*/
+
+SELECT * FROM stream
+LIMIT 5;
+
+SELECT * from chat
+LIMIT 5;
+
+/*
+Here we can look at the most popular games on Twitch*/
+
+SELECT game AS 'Popular Games', 
+COUNT(*) AS 'Stream Count'
+FROM stream
+GROUP BY 1
+ORDER BY 2 DESC;
+
+/*Where are League of Legend streamers primarily located?*/
+
+SELECT country, COUNT(*)
+FROM stream
+WHERE game = 'League of Legends'
+GROUP BY 1
+ORDER BY 2 DESC;
+
+/*What sources are Twitch users watching streams on*/
+
+SELECT player, COUNT(*) 
+FROM stream
+GROUP BY 1
+ORDER BY 2 DESC;
+
+/*Here is a look at the most popular games grouped by genre
+*/
+
+SELECT game,
+  CASE
+   WHEN game = 'League of Legends'
+     THEN 'MOBA'
+   WHEN game = 'Dota 2' 
+     THEN 'MOBA'
+   WHEN game = 'Heroes of the Strom' 
+     THEN 'MOBA'
+   WHEN game = 'Counter-Strike: Global Offensive' 
+     THEN 'FPS'
+   WHEN game = 'DayZ' 
+     THEN 'Survival'
+   WHEN game = 'ARK: Survival Evolved' 
+     THEN 'Survival'
+   ELSE 'Other'
+   END AS 'genre', 
+   COUNT(*)
+FROM stream
+GROUP BY 1
+ORDER BY 2 DESC;
+
+/*How does view count in the US change in the course of a day?*/
+
+SELECT strftime('%H', time) AS 'Time', COUNT(*) 
+FROM stream
+WHERE country IS 'US'
+GROUP BY 1
+ORDER BY 2 DESC
+limit 10;
+
+/* We can join the two tables on device_id for some extra insight*/
+
+SELECT *
+FROM stream
+JOIN chat
+ ON stream.device_id = chat.device_id;
