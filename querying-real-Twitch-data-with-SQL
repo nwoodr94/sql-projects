@@ -1,4 +1,4 @@
-/* In this project I use SQL to query and organize real Twitch data for some important business insights.*/
+/*In this project I use SQL to query and organize real Twitch data for some important business insights.*/
 
 /*Let's take a look at a sample of these tables to see what they look like*/
 
@@ -8,8 +8,7 @@ LIMIT 5;
 SELECT * from chat
 LIMIT 5;
 
-/*
-Here we can look at the most popular games on Twitch*/
+/*Here we can look at the most popular games on Twitch*/
 
 SELECT game AS 'Popular Games', 
 COUNT(*) AS 'Stream Count'
@@ -32,8 +31,7 @@ FROM stream
 GROUP BY 1
 ORDER BY 2 DESC;
 
-/*Here is a look at the most popular games grouped by genre
-*/
+/*Here is a look at the most popular games grouped by genre*/
 
 SELECT game,
   CASE
@@ -65,7 +63,7 @@ GROUP BY 1
 ORDER BY 2 DESC
 limit 10;
 
-/* We can join the two tables on device_id for some extra insight*/
+/*We can join the two tables on device_id for some extra insight*/
 
 SELECT *
 FROM stream
