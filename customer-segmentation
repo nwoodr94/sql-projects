@@ -1,4 +1,4 @@
-/*Shows by customer segmentation which ad campaigns, 'campaign', were most successful in reaching customers, 'count(*)', grouped by which cute animal was used, 'test'.*/
+/*Shows by customer segmentation which ad campaigns, 'campaign', were most successful in reaching customers, 'count(*)', grouped by which cute animal was used, 'test'.*/ 
 
 SELECT count(*), test
 FROM users
