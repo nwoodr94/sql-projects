@@ -12,7 +12,7 @@ Sift through a database to search for invalid IP addresses, fake zip codes, and 
 ### Aggregation
 1. [Business Intelligence](https://github.com/nwoodr94/sql-projects/blob/master/querying-real-Twitch-data-with-SQL)
 Pull together user base and company information to determine which products and times of day are most popular for livestreaming.
-2. [Business Statistics](https://github.com/nwoodr94/sql-projects/blob/master/car-service-data)
+2. [Business Safety](https://github.com/nwoodr94/sql-projects/blob/master/car-service-data)
 Aggregate information for a rideshare company so partners and customers are both safe and satisfied.
 3. [Marketing Campaigns](https://github.com/nwoodr94/sql-projects/blob/master/above-and-beyond-for-customers)
 Find out what memes lay in a customers text based communication with a business to launch far-reaching marketing campaigns.
