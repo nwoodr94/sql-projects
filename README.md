@@ -1,6 +1,6 @@
 # sql-projects
 
-This is a SQL repository which showcases my work involving manipulation of data to extract important information.
+This is a SQL repository which showcases my data manipulation skills.
 
 
 ### Data Mining
