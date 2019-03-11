@@ -1,7 +1,5 @@
 # sql-projects
 
-[Home](https://nwoodr94.github.io/portfolio-website/)
-
 This is a SQL repository which showcases my data manipulation skills.
 
 ### Data Mining
