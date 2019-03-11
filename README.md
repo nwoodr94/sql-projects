@@ -1,7 +1,8 @@
 # sql-projects
 
-This is a SQL repository which showcases my data manipulation skills.
+[Home](https://nwoodr94.github.io/portfolio-website/)
 
+This is a SQL repository which showcases my data manipulation skills.
 
 ### Data Mining
 1. [Hole in the Wall](https://github.com/nwoodr94/sql-projects/blob/master/hole-in-the-wall)
